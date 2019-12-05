@@ -9,10 +9,22 @@ import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
 
 class ScheduleActivityViewModel(val repository: Repository, val application: Application): ViewModel() {
 
-    val sessionList: LiveData<List<TrainingSession>> = repository.queryAllSessions()
+    var sessionList: LiveData<List<TrainingSession>> = repository.queryAllSessions()
 
 
     fun getSessionsByDay(day: WeekDay){
-        repository.getSessionsByDay(day)
+        sessionList = repository.getSessionsByDay(day)
+    }
+
+    fun getSessionById(id: Long): TrainingSession{
+        return repository.getSessionById(id)
+    }
+
+    fun addParticipant(id: Long){
+        repository.addParticipant(id)
+    }
+
+    fun removeParticipant(id: Long){
+        repository.removeParticipant(id)
     }
 }

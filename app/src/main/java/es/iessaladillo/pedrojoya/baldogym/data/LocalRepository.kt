@@ -2,6 +2,7 @@ package es.iessaladillo.pedrojoya.baldogym.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
@@ -9,26 +10,59 @@ import java.util.concurrent.ThreadLocalRandom
 
 object LocalRepository : Repository {
 
-    private val sessionList: MutableList<TrainingSession> = createWeekSchedule() as MutableList<TrainingSession>
-    private val sessionLiveData: MutableLiveData<List<TrainingSession>> = MutableLiveData(sessionList)
+
+    val sessionList: MutableList<TrainingSession> = createWeekSchedule() as MutableList<TrainingSession>
+    private val sessionsLiveData: MutableLiveData<List<TrainingSession>> = MutableLiveData(sessionList)
 
     override fun queryAllSessions(): LiveData<List<TrainingSession>> {
-        sessionLiveData.value = ArrayList<TrainingSession>(sessionList)
-        return sessionLiveData
+        sessionsLiveData.value = ArrayList<TrainingSession>(sessionList)
+        return sessionsLiveData
     }
 
-    override fun getSessionsByDay(day: WeekDay) {
-        val sessionsInDay: MutableList<TrainingSession> = mutableListOf()
+    override fun getSessionsByDay(day: WeekDay): LiveData<List<TrainingSession>> {
+        var sessionsInDay: MutableList<TrainingSession> = mutableListOf()
 
         for(session in sessionList){
             if(session.weekDay == day){
                 sessionsInDay.add(session)
-                println(session.weekDay.toString())
             }
         }
 
-        sessionLiveData.value = ArrayList<TrainingSession>(sessionsInDay)
+
+        return
     }
+
+    override fun getSessionById(id: Long): TrainingSession {
+        lateinit var sessionFound: TrainingSession
+
+        for (session in sessionList) {
+            if (session.id == id) {
+                sessionFound = session
+            }
+        }
+
+        return sessionFound
+    }
+
+    override fun addParticipant(id: Long){
+        for(session in sessionList){
+            if(session.id == id){
+                sessionList.indexOf(session)
+                sessionList.set(sessionList.indexOf(session), session.copy(participants = session.participants + 1))
+            }
+        }
+    }
+
+    override fun removeParticipant(id: Long) {
+        for(session in sessionList){
+            if(session.id == id){
+                sessionList.indexOf(session)
+                sessionList.set(sessionList.indexOf(session), session.copy(participants = session.participants - 1))
+            }
+        }
+    }
+
+
 
     private fun createWeekSchedule(): List<TrainingSession> {
 

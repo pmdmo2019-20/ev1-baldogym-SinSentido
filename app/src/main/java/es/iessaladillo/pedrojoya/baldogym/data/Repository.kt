@@ -8,6 +8,12 @@ interface Repository {
 
     fun queryAllSessions(): LiveData<List<TrainingSession>>
 
-    fun getSessionsByDay(day: WeekDay)
+    fun getSessionsByDay(day: WeekDay): LiveData<List<TrainingSession>>
+
+    fun getSessionById(id: Long): TrainingSession
+
+    fun addParticipant(id: Long)
+
+    fun removeParticipant(id: Long)
 
 }

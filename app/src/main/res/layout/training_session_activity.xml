@@ -7,9 +7,9 @@
     tools:context=".ui.trainingsession.TrainingSessionActivity">
 
     <ImageView
-        android:id="@+id/imgFormContactAvatar"
+        android:id="@+id/imgSessionActivity"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="220dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFormContactAvatar" />
+        app:layout_constraintTop_toBottomOf="@+id/imgSessionActivity" />
 
     <TextView
         android:id="@+id/lblSessionTrainerName"
@@ -50,17 +50,18 @@
         android:id="@+id/lblSessionRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/roomName"
         android:layout_margin="@dimen/session_vertical_margin"
+        android:text="@string/roomName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblSessionDay" />
+        app:layout_constraintTop_toBottomOf="@+id/lblSessionTime" />
 
     <TextView
         android:id="@+id/lblSessionDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/session_vertical_margin"
+        android:text="@string/description"
+        app:layout_constraintBottom_toTopOf="@+id/lblSessionParticipants"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -77,14 +78,15 @@
 
     <TextView
         android:id="@+id/lblSessionParticipants"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/black"
+        android:padding="@dimen/schedule_item_padding"
         android:text="@string/participants"
         android:textColor="@color/white"
-        android:padding="@dimen/schedule_item_padding"
-        android:layout_margin="@dimen/session_vertical_margin"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSessionJoinButton"
@@ -96,5 +98,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/lblSessionParticipants"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lblSessionParticipants" />
+
+    <TextView
+        android:id="@+id/lblSessionTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_margin="@dimen/session_vertical_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSessionDay" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

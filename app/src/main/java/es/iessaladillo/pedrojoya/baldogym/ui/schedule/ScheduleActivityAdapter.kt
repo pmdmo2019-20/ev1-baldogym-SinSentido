@@ -3,6 +3,7 @@ package es.iessaladillo.pedrojoya.baldogym.ui.schedule
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,7 @@ import es.iessaladillo.pedrojoya.baldogym.ui.trainingsession.TrainingSessionActi
 class ScheduleActivityAdapter: RecyclerView.Adapter<ScheduleActivityAdapter.ViewHolder>() {
 
     private var onItemClick: ScheduleActivityAdapter.OnItemClick? = null
-    private var sessions: List<TrainingSession> = emptyList()
+    var sessions: List<TrainingSession> = emptyList()
 
     init {
         setHasStableIds(true)
@@ -44,15 +45,19 @@ class ScheduleActivityAdapter: RecyclerView.Adapter<ScheduleActivityAdapter.View
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
+        var joined: Boolean = false
+
         private val lblClassTime: TextView = itemView.findViewById(R.id.lblClassTime)
         private val lblClassName: TextView = itemView.findViewById(R.id.lblClassName)
         private val lblTrainerName: TextView = itemView.findViewById(R.id.lblTrainerName)
         private val lblRoomName: TextView = itemView.findViewById(R.id.lblRoomName)
         private val lblParticipants: TextView = itemView.findViewById(R.id.lblParcipants)
         private val imgSession: ImageView = itemView.findViewById(R.id.imgSession)
+        private val btnJoin: Button = itemView.findViewById(R.id.btnJoinClass)
 
         init{
-            itemView.setOnClickListener(){ onItemClick?.onSessionClick(adapterPosition) }
+            itemView.setOnClickListener { onItemClick?.onSessionClick(adapterPosition) }
+            btnJoin.setOnClickListener { onItemClick?.onButtonClick()}
         }
 
         fun bind(session: TrainingSession){
@@ -64,11 +69,12 @@ class ScheduleActivityAdapter: RecyclerView.Adapter<ScheduleActivityAdapter.View
                 lblParticipants.text = participants.toString()
                 imgSession.setImageResource(photoResId)
             }
-
         }
     }
 
     interface OnItemClick{
         fun onSessionClick(position: Int)
+
+        fun onButtonClick()
     }
 }

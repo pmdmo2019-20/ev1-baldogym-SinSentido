@@ -106,14 +106,20 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         viewModel.getSessionsByDay(day)
     }
 
-    //NAVIGATION METHODS
+    //CLICK LISTENERS
     override fun onSessionClick(position: Int) {
-        println("Has pulsado sobre la actividad")
-        goToSessionActivity()
+        val sessionToShow = listAdapter.sessions[position]
+
+        goToSessionActivity(sessionToShow.id)
     }
 
-    private fun goToSessionActivity(){
-        val intent = TrainingSessionActivity.goToActivity(this)
+    override fun onButtonClick(){
+        //TODO
+    }
+
+    //NAVIGATION METHODS
+    private fun goToSessionActivity(id: Long){
+        val intent = TrainingSessionActivity.goToActivity(this, id)
         startActivity(intent)
     }
 

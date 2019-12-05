@@ -8,6 +8,69 @@
     android:padding="@dimen/schedule_item_padding"
     tools:context=".ui.schedule.ScheduleActivity">
 
-    <!-- TODO -->
+    <TextView
+        android:id="@+id/lblClassTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgContactAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Contact Avatar"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblClassTime"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/lblClassName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_margin="@dimen/session_vertical_margin"
+        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
+        app:layout_constraintTop_toTopOf="@+id/imgContactAvatar" />
+
+    <TextView
+        android:id="@+id/lblTrainerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lblTrainerName"
+        android:layout_margin="@dimen/session_vertical_margin"
+        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/lblClassName" />
+
+    <TextView
+        android:id="@+id/lblRoomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomName"
+        android:layout_margin="@dimen/session_vertical_margin"
+        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/lblTrainerName" />
+
+    <Button
+        android:id="@+id/btnJoinClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule_item_join"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblParcipants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/btnJoinClass"
+        app:layout_constraintStart_toStartOf="@+id/btnJoinClass"
+        app:layout_constraintTop_toBottomOf="@+id/btnJoinClass" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

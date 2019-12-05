@@ -36,5 +36,9 @@
     <string name="session_imgPhoto">Training session photo</string>
     <string name="roomName">Room name</string>
     <string name="selectedDay">Selected day</string>
+    <string name="className">Class Name</string>
+    <string name="trainerName">Trainer name</string>
+    <string name="description">Session description</string>
+    <string name="participants">Participants 22</string>
 
 </resources>

@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom
 object LocalRepository : Repository {
 
 
-    val sessionList: MutableList<TrainingSession> = createWeekSchedule() as MutableList<TrainingSession>
+    private val sessionList: MutableList<TrainingSession> = createWeekSchedule() as MutableList<TrainingSession>
     private val sessionsLiveData: MutableLiveData<List<TrainingSession>> = MutableLiveData(sessionList)
 
     override fun queryAllSessions(): LiveData<List<TrainingSession>> {
@@ -26,10 +26,11 @@ object LocalRepository : Repository {
             if(session.weekDay == day){
                 sessionsInDay.add(session)
             }
+
+
         }
-
-
-        return
+        sessionsLiveData.value = ArrayList<TrainingSession>(sessionsInDay)
+        return sessionsLiveData
     }
 
     override fun getSessionById(id: Long): TrainingSession {

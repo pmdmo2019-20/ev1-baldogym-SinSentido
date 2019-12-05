@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.schedule_activity.*
 
 class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClick {
     private lateinit var selectedDay: WeekDay
+    var day = ""
 
     private lateinit var lblSelectedDay: TextView
     private lateinit var btnMon: Button
@@ -44,7 +45,15 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         setContentView(R.layout.schedule_activity)
         setupViews()
         observeSessionList()
-        getCurrentDaySessions()
+        if (savedInstanceState != null) {
+            day = savedInstanceState.getString("SELECTED_DAY")
+            getSavedDay(day)
+            getSessionsByDay(selectedDay)
+        }
+        else{
+            getCurrentDaySessions()
+        }
+
     }
 
     private fun setupViews(){
@@ -94,9 +103,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     //SELECT DAY METHODS
     private fun getCurrentDaySessions(){
         selectedDay = getCurrentWeekDay()
-
-        lblSelectedDay.text = selectedDay.toString()
-        viewModel.getSessionsByDay(selectedDay)
+        getSessionsByDay(selectedDay)
     }
 
     private fun getSessionsByDay(day: WeekDay){
@@ -121,6 +128,25 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     private fun goToSessionActivity(id: Long){
         val intent = TrainingSessionActivity.goToActivity(this, id)
         startActivity(intent)
+    }
+
+    //SAVE INSTACE STATE
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("SELECTED_DAY", selectedDay.toString())
+
+        super.onSaveInstanceState(outState)
+    }
+
+    fun getSavedDay(day: String){
+        when(day){
+            "MONDAY" -> selectedDay = WeekDay.MONDAY
+            "TUESDAY" -> selectedDay = WeekDay.TUESDAY
+            "WEDNESDAY" -> selectedDay = WeekDay.WEDNESDAY
+            "THURSDAY" -> selectedDay = WeekDay.THURSDAY
+            "FRIDAY" -> selectedDay = WeekDay.FRIDAY
+            "SATURDAY" -> selectedDay = WeekDay.SATURDAY
+            "SUNDAY" -> selectedDay = WeekDay.SUNDAY
+        }
     }
 
 }

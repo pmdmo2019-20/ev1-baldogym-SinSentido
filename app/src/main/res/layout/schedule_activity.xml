@@ -95,12 +95,14 @@
         android:id="@+id/lblSelectedDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/selectedDay"
         android:padding="@dimen/schedule_daybar_verticalPadding"
+        android:text="@string/selectedDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lstContacts"
+        android:id="@+id/lstSessions"
         android:layout_width="0dp"
         android:layout_height="0dp"
 

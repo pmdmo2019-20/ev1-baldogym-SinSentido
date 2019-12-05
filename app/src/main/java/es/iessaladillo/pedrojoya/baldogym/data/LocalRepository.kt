@@ -1,5 +1,7 @@
 package es.iessaladillo.pedrojoya.baldogym.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
@@ -7,7 +9,13 @@ import java.util.concurrent.ThreadLocalRandom
 
 object LocalRepository : Repository {
 
-    // TODO:
+    private val sessionList: MutableList<TrainingSession> = createWeekSchedule() as MutableList<TrainingSession>
+    private val sessionLiveData: MutableLiveData<List<TrainingSession>> = MutableLiveData(sessionList)
+
+    override fun queryAllSessions(): LiveData<List<TrainingSession>> {
+        sessionLiveData.value = ArrayList<TrainingSession>(sessionList)
+        return sessionLiveData
+    }
 
     private fun createWeekSchedule(): List<TrainingSession> {
 

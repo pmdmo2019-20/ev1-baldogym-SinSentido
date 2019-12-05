@@ -17,6 +17,19 @@ object LocalRepository : Repository {
         return sessionLiveData
     }
 
+    override fun getSessionsByDay(day: WeekDay) {
+        val sessionsInDay: MutableList<TrainingSession> = mutableListOf()
+
+        for(session in sessionList){
+            if(session.weekDay == day){
+                sessionsInDay.add(session)
+                println(session.weekDay.toString())
+            }
+        }
+
+        sessionLiveData.value = ArrayList<TrainingSession>(sessionsInDay)
+    }
+
     private fun createWeekSchedule(): List<TrainingSession> {
 
         data class SessionType(val name: String, val photoResId: Int, val description: String)

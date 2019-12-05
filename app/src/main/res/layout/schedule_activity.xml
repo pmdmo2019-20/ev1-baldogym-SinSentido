@@ -8,79 +8,79 @@
     tools:context=".ui.schedule.ScheduleActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnMon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_mon"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/btnTue"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnTue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_tue"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/btnWed"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/btnMon"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnWed"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_wed"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/btnThu"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/btnTue"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnThu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_thu"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/btnFri"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/btnWed"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnFri"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_fri"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/btnSat"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/btnThu"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnSat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:text="@string/schedule_sat"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/btnSun"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintStart_toEndOf="@+id/btnFri"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btnSun"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
@@ -88,7 +88,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/btnSat"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -99,7 +99,7 @@
         android:text="@string/selectedDay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstSessions"

@@ -17,10 +17,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgContactAvatar"
+        android:id="@+id/imgSession"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:contentDescription="Contact Avatar"
+        android:contentDescription="@string/session_imgPhoto"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_margin="@dimen/session_vertical_margin"
-        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
-        app:layout_constraintTop_toTopOf="@+id/imgContactAvatar" />
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
+        app:layout_constraintTop_toTopOf="@+id/imgSession" />
 
     <TextView
         android:id="@+id/lblTrainerName"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="lblTrainerName"
         android:layout_margin="@dimen/session_vertical_margin"
-        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
         app:layout_constraintTop_toBottomOf="@+id/lblClassName" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="@string/roomName"
         android:layout_margin="@dimen/session_vertical_margin"
-        app:layout_constraintStart_toEndOf="@+id/imgContactAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
         app:layout_constraintTop_toBottomOf="@+id/lblTrainerName" />
 
     <Button
